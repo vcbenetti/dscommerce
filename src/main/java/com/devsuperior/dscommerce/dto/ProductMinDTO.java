@@ -1,6 +1,11 @@
 package com.devsuperior.dscommerce.dto;
 
+import com.devsuperior.dscommerce.entities.Category;
 import com.devsuperior.dscommerce.entities.Product;
+import jakarta.validation.constraints.NotEmpty;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ProductMinDTO {
@@ -9,6 +14,7 @@ public class ProductMinDTO {
     private String name;
     private Double price;
     private String imgUrl;
+
 
     public ProductMinDTO(){
 
