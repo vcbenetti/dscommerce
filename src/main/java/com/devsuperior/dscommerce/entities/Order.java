@@ -31,10 +31,8 @@ public class Order {
     @OneToMany(mappedBy = "id.order")
     private Set<OrderItem> items = new HashSet<>();
 
-    public Order(){
-
+    public Order() {
     }
-
 
     public Order(Long id, Instant moment, OrderStatus status, User client, Payment payment) {
         this.id = id;
@@ -43,7 +41,6 @@ public class Order {
         this.client = client;
         this.payment = payment;
     }
-
 
     public Long getId() {
         return id;
@@ -95,14 +92,16 @@ public class Order {
 
     @Override
     public boolean equals(Object o) {
+        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
         Order order = (Order) o;
+
         return Objects.equals(id, order.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id);
+        return id != null ? id.hashCode() : 0;
     }
 }

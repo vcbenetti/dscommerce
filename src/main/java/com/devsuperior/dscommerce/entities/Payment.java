@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import java.time.Instant;
 import java.util.Objects;
 
-
 @Entity
 @Table(name = "tb_payment")
 public class Payment {
@@ -21,8 +20,7 @@ public class Payment {
     @MapsId
     private Order order;
 
-    public Payment(){
-
+    public Payment() {
     }
 
     public Payment(Long id, Instant moment, Order order) {
@@ -30,7 +28,6 @@ public class Payment {
         this.moment = moment;
         this.order = order;
     }
-
 
     public Long getId() {
         return id;
@@ -58,15 +55,16 @@ public class Payment {
 
     @Override
     public boolean equals(Object o) {
+        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
         Payment payment = (Payment) o;
+
         return Objects.equals(id, payment.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id);
+        return id != null ? id.hashCode() : 0;
     }
 }
-

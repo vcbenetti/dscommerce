@@ -17,8 +17,7 @@ public class OrderItemPK {
     @JoinColumn(name = "product_id")
     private Product product;
 
-    public OrderItemPK(){
-
+    public OrderItemPK() {
     }
 
     public Order getOrder() {
@@ -39,16 +38,19 @@ public class OrderItemPK {
 
     @Override
     public boolean equals(Object o) {
+        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
         OrderItemPK that = (OrderItemPK) o;
-        return Objects.equals(order, that.order) && Objects.equals(product, that.product);
+
+        if (!Objects.equals(order, that.order)) return false;
+        return Objects.equals(product, that.product);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hashCode(order);
-        result = 31 * result + Objects.hashCode(product);
+        int result = order != null ? order.hashCode() : 0;
+        result = 31 * result + (product != null ? product.hashCode() : 0);
         return result;
     }
 }
